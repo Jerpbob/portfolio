@@ -30,6 +30,8 @@ document.body.prepend(nav);
 for (let p of pages) {
     let url = p.url;
     let title = p.title;
+    console.log(url);
+
     if (!ARE_WE_HOME) {
         url = '../' + url;
         console.log("No we're not home.");
@@ -37,6 +39,10 @@ for (let p of pages) {
     let a = document.createElement('a');
     a.href = url;
     a.textContent = title;
+    console.log(a.host);
+    console.log(location.host);
+    console.log(a.pathname);
+    console.log(location.pathname);
     if (a.host === location.host && a.pathname === location.pathname) {
         a.classList.add('current');
     }
