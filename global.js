@@ -33,7 +33,7 @@ for (let p of pages) {
     console.log('first url' + url);
 
     if (!ARE_WE_HOME) {
-        url = '../' + url;
+        url = '../../' + url;
         console.log("No we're not home.");
     }
     console.log('current url' + url);
