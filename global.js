@@ -41,6 +41,7 @@ for (let p of pages) {
 
     if (a.pathname === '/https://github.com/Jerpbob') {
         a.target = '_blank'
+        a.href = 'https://github.com/Jerpbob'
     }
     if (a.host === location.host && a.pathname === location.pathname) {
         a.classList.add('current');
