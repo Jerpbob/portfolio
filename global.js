@@ -18,7 +18,7 @@ const ARE_WE_HOME = document.documentElement.classList.contains('home');
 
 let pages = [
     { url: 'portfolio/', title: 'Home' },
-    { url: '../portfolio/projects/', title: 'Projects' },
+    { url: 'portfolio/projects/', title: 'Projects' },
     { url: 'portfolio/contact/', title: 'Contact' },
     { url: 'portfolio/resume/', title: 'Resume' },
     { url: 'https://github.com/Jerpbob', title: 'Github' }
