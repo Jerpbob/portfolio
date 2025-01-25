@@ -23,7 +23,7 @@ let pages = [
     { url: 'portfolio/resume/', title: 'Resume' },
     { url: 'https://github.com/Jerpbob', title: 'Github' }
 ];
-
+console.log(pages)
 let nav = document.createElement('nav');
 document.body.prepend(nav);
 
