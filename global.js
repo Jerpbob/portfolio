@@ -30,7 +30,7 @@ for (let p of pages) {
     let url = p.url;
     let title = p.title;
 
-    if (!ARE_WE_HOME) {
+    if (!ARE_WE_HOME && !url.startsWith('http')) {
         url = '../../' + url;
         console.log("No we're not home.");
     }
