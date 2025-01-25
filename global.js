@@ -38,9 +38,9 @@ for (let p of pages) {
     let a = document.createElement('a');
 
     if (a.pathname === '../../https://github.com/Jerpbob') {
-        a.target = '_blank'
         a.href = 'https://github.com/Jerpbob'
         a.textContent = title
+        a.target = '_blank'
     }
     else {
         a.href = url;
