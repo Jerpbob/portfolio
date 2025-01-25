@@ -23,27 +23,22 @@ let pages = [
     { url: 'portfolio/resume/', title: 'Resume' },
     { url: 'https://github.com/Jerpbob', title: 'Github' }
 ];
-console.log(pages)
 let nav = document.createElement('nav');
 document.body.prepend(nav);
 
 for (let p of pages) {
     let url = p.url;
     let title = p.title;
-    console.log('first url' + url);
 
     if (!ARE_WE_HOME) {
         url = '../../' + url;
         console.log("No we're not home.");
     }
-    console.log('current url' + url);
+
     let a = document.createElement('a');
     a.href = url;
     a.textContent = title;
-    console.log(a.host);
-    console.log(location.host);
-    console.log(a.pathname);
-    console.log(location.pathname);
+
     if (a.host === location.host && a.pathname === location.pathname) {
         a.classList.add('current');
     }
