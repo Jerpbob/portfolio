@@ -17,7 +17,7 @@ function $$(selector, context = document) {
 const ARE_WE_HOME = document.documentElement.classList.contains('home');
 
 let pages = [
-    { url: 'portfolio', title: 'Home' },
+    { url: '/portfolio/', title: 'Home' },
     { url: 'portfolio/projects/', title: 'Projects' },
     { url: 'portfolio/contact/', title: 'Contact' },
     { url: 'portfolio/resume/', title: 'Resume' },
@@ -36,6 +36,7 @@ for (let p of pages) {
         url = '../' + url;
         console.log("No we're not home.");
     }
+    console.log('current url' + url);
     let a = document.createElement('a');
     a.href = url;
     a.textContent = title;
