@@ -1,9 +1,47 @@
-console.log('IT’S ALIVE!');
+export async function fetchJSON(url) {
+    try {
+        // Fetch the JSON file from the given URL
+        const response = await fetch(url);
+        console.log(response)
+        if (!response.ok) {
+            throw new Error(`Failed to fetch projects: ${response.statusText}`);
+        }
+        const data = await response.json();
+        return data;
+
+
+    } catch (error) {
+        console.error('Error fetching or parsing JSON data:', error);
+    }
+}
 
 function $$(selector, context = document) {
     return Array.from(context.querySelectorAll(selector));
 }
 
+export function renderProjects(projects, containerElement, headingLevel = 'h2') {
+    containerElement.innerHTML = '';
+    for (const project of projects) {
+        const article = document.createElement('article');
+        article.innerHTML = `
+            <${headingLevel}>${project.title}</${headingLevel}>
+            <img src="${project.image}" alt="${project.title}">
+            <div>
+                <p>${project.description}</p>
+                <p>${project.year}</p>
+            </div>
+        `;
+        containerElement.appendChild(article);
+    }
+}
+
+export function countProjects(projects, containerElement) {
+    containerElement.innerHTML = `<h1>${projects.length} Projects</h1>`
+}
+
+export async function fetchGitHubData(username) {
+    return fetchJSON(`https://api.github.com/users/${username}`);
+}
 // let navLinks = $$("nav a");
 
 // let currentLink = navLinks.find(
@@ -17,10 +55,10 @@ function $$(selector, context = document) {
 const ARE_WE_HOME = document.documentElement.classList.contains('home');
 
 let pages = [
-    { url: 'portfolio/', title: 'Home' },
-    { url: 'portfolio/projects/', title: 'Projects' },
-    { url: 'portfolio/contact/', title: 'Contact' },
-    { url: 'portfolio/resume/', title: 'Resume' },
+    { url: '', title: 'Home' },
+    { url: 'projects/', title: 'Projects' },
+    { url: 'contact/', title: 'Contact' },
+    { url: 'resume/', title: 'Resume' },
     { url: 'https://github.com/Jerpbob', title: 'Github' }
 ];
 let nav = document.createElement('nav');
@@ -31,20 +69,16 @@ for (let p of pages) {
     let title = p.title;
 
     if (!ARE_WE_HOME && !url.startsWith('http')) {
-        url = '../../' + url;
-        console.log("No we're not home.");
+        url = '../' + url;
     }
 
     let a = document.createElement('a');
+    a.href = url;
+    a.textContent = title;
+    nav.append(a);
 
-    if (a.pathname === '../../https://github.com/Jerpbob') {
-        a.href = 'https://github.com/Jerpbob';
-        a.textContent = title;
-        a.target = "_blank";
-    }
-    else {
-        a.href = url;
-        a.textContent = title;
+    if (a.host !== location.host) {
+        a.target = '_blank'
     }
 
     if (a.host === location.host && a.pathname === location.pathname) {
@@ -78,4 +112,3 @@ select.addEventListener('input', function (event) {
     document.documentElement.style.setProperty('color-scheme', event.target.value);
     localStorage.colorScheme = event.target.value
 });
-
