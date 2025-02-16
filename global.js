@@ -70,7 +70,7 @@ for (let p of pages) {
     let title = p.title;
 
     if (!ARE_WE_HOME && !url.startsWith('http')) {
-        url = '../' + url;
+        url = url.replace('/portfolio', '');
     }
 
     let a = document.createElement('a');
