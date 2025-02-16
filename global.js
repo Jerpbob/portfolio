@@ -55,11 +55,11 @@ export async function fetchGitHubData(username) {
 const ARE_WE_HOME = document.documentElement.classList.contains('home');
 
 let pages = [
-    { url: '', title: 'Home' },
-    { url: 'projects/', title: 'Projects' },
-    { url: 'contact/', title: 'Contact' },
-    { url: 'resume/', title: 'Resume' },
-    { url: 'meta/', title: 'Meta' },
+    { url: '/portfolio', title: 'Home' },
+    { url: '/portfolio/projects/', title: 'Projects' },
+    { url: '/portfolio/contact/', title: 'Contact' },
+    { url: '/portfolio/resume/', title: 'Resume' },
+    { url: '/portfolio/meta/', title: 'Meta' },
     { url: 'https://github.com/Jerpbob', title: 'Github' }
 ];
 let nav = document.createElement('nav');
